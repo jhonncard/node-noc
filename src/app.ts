@@ -9,8 +9,8 @@ import  'dotenv/config';
 
 
 function main(){
- // Server.start();
-   console.log(process.env);
+  Server.start();
+  // console.log(process.env);
 }
 
 

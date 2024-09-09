@@ -9,8 +9,8 @@ El objetivo es crear una serie de tareas usando Arquitectura Limpia con TypeScri
 
     ```text
         PORT=
-
-        MAILER_EMAIL =
+        MAILER_SERVICE=
+        MAILER_EMAIL=
         MAILER_SERCRET_KEY =
         PROD = FLASE
         DEV = TRUE 
