@@ -13,6 +13,8 @@ export class Server {
   public static start() {
 
     console.log( 'Server started...' );
+
+    
     //console.log(process.env);
     //todo: enviar email con adjuntos  
    
