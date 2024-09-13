@@ -1,12 +1,12 @@
 
-
-
 node_modules/
+mongo_data/
+postgres_data/
 dist/
 
 # Logs
-.DS_Store
 logs/
+
 .env
 
-mongo_data/
+.DS_Store

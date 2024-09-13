@@ -1,30 +1,20 @@
-# Proyecto NOC
+## Proyecto NOC
 
 El objetivo es crear una serie de tareas usando Arquitectura Limpia con TypeScript.
 
-## DEV
+### DEV
 
-1. clonar el archivo env.template a .env.**
-2. configurar las variables de entorno.**
+1. Clonar el archivo env.template a .env.
+2. Configurar las variables de entorno.
+3. Ejecutar comando  ```npm install```
 
-    ```text
-        PORT=
-        MAILER_SERVICE=
-        MAILER_EMAIL=
-        MAILER_SERCRET_KEY =
-        PROD = FLASE
-        DEV = TRUE 
-        QA = FALSEs
-    ```
+4. Levantar las bases de datos con el comando
+   ```docker compose up -d```
+5. Ejecutar el comandop 
+   ```npx prisma migrate dev```
 
-3. Ejecutart el comando
+6. Ejecutar  
+   ```npm run dev```
 
-    ```bash
-    npm install
-    ```
-
-4. Ejecutar
-
-    ```bash
-    npm run dev
-    ```
+### Obtener gmail key desde
+[Google AppPasseords](https://myaccount.googl.com//u/0/apppasseords)

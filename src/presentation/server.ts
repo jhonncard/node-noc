@@ -1,11 +1,25 @@
 import 'dotenv/config';
-import { CheckService } from '../domain/use-cases/checks/check-service';
 import { FileSystemDatasource } from '../Infrastructure/datasources/file-system.datasource';
+import { MongoLogDatasources } from '../Infrastructure/datasources/mongo-log.datasources';
+import { PostgresLogRepository } from '../Infrastructure/datasources/postgres-log.datasource';
 import { LogRepositoryImpl } from '../Infrastructure/repositories/log.respository.impl';
 import { CronService } from './cron/cron-service';
 import { EmailService } from './email/email.server';
+import { CheckServiceMultiple } from '../domain/use-cases/checks/check-service-multiple';
 
-const fileSystemLogRepository = new LogRepositoryImpl( new FileSystemDatasource(), );
+const fsLogRepository = new LogRepositoryImpl( 
+  new FileSystemDatasource(),
+);
+
+const mgLogRepository = new LogRepositoryImpl(
+  new MongoLogDatasources(),
+);
+const pgLogRepository = new LogRepositoryImpl(
+  new PostgresLogRepository(),
+);
+
+
+
 const emailService = new EmailService();
 
 export class Server {
@@ -33,18 +47,17 @@ export class Server {
 
 
 
-    //     CronService.createJob(
-    //   '*/5 * * * * *',
-    //   () => {
-    //     const url = 'https://google.com';
-    //     new CheckService(
-    //       fileSystemLogRepository,
-    //       () => console.log( `${ url } is ok` ),
-    //       ( error ) => console.log( error ),
-    //     ).execute( url );
-        // new CheckService().execute( 'http://localhost:3000' );
-    //   }
-    // );
+      CronService.createJob(
+      '*/5 * * * * *',
+      () => {
+        const url = 'https://google.com';
+        new CheckServiceMultiple(
+          [ fsLogRepository, mgLogRepository, pgLogRepository ], 
+          () => console.log( `${ url } is ok` ),
+          ( error ) => console.log( error ),
+        ).execute( url );
+      } 
+    );
 
   }
 
