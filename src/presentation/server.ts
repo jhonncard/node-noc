@@ -32,7 +32,7 @@ export class Server {
     //console.log(process.env);
     //todo: enviar email con adjuntos  
    
-    // emailService.sendEmail({
+    // emailService.SendEmail({
     //   to: 'jhonnya.cardonaa@gmail.com',
     //   subject: 'File System Logs',
     //   htmlbody: `

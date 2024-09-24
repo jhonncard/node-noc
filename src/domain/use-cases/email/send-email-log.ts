@@ -8,7 +8,7 @@ interface SendLogEmailUseCase {
 
 
 
-export class sendEmailLogs implements SendLogEmailUseCase {
+export class SendEmailLogs implements SendLogEmailUseCase {
 
   constructor(
      private readonly emailService: EmailService,
